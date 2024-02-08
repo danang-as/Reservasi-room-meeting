@@ -37,32 +37,6 @@ class UserController extends Controller
         return view('user.login_user');
     }
 
-    
-
-    public function pendukung_reservasi()
-    {
-        return  view('user.reservasi.pendukung_reservasi');
-    }
-
-    public function konfrim_reservasi()
-    {
-        return  view('user.reservasi.konfrim_reservasi');
-    }
-
-    public function reschedule()
-    {
-        return  view('user.reschedule.reschedule');
-    }
-
-    public function pendukung_reschedule()
-    {
-        return  view('user.reschedule.pendukung_reschedule');
-    }
-
-    public function konfrim_reschedule()
-    {
-        return  view('user.reschedule.konfrim_reschedule');
-    }
 
     public function history()
     {

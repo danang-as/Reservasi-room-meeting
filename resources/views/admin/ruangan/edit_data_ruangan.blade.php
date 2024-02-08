@@ -30,7 +30,7 @@
                       class="table table-striped table-bordered"
                     >
                     <a href='{{ url("data_ruangan")}}' class="btn btn-secondary mb-2"><i class="	fas fa-backward"></i>Kembali</a>
-                    <form action="{{url('data_ruangan/'.$data_ruangan->id_ruangan)}}" method="post">
+                    <form action="{{url('data_ruangan/'.$data_ruangan->id)}}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="my-3 p-3 bg-body rounded shadow-sm">

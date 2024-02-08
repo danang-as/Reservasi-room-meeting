@@ -54,18 +54,18 @@
 
       <div class="left-[21px] top-[90px] absolute text-white text-[40px] font-normal font-['Inter']">Reservasi</div>
 
-      <div class="w-[30px] h-[30px] left-[30px] top-[190px] text-white text-center absolute rounded-bl-[20px] bg-orange-700">1</div>
+      <div class="w-[30px] h-[30px] left-[30px] top-[160px] text-white text-center absolute rounded-bl-[20px] bg-orange-700">1</div>
 
       <!-- Pilih Ruangan -->
-      <div class="left-[30px] top-[230px] absolute text-black text-[10px] font-normal font-['Inter']">Pilih ruangan :</div>
-      <select class="w-[350px] h-[30px] left-[30px] top-[250px] absolute bg-stone-500 text-gray-800 px-2 p-1 rounded-bl-[15px] bg-opacity-30" name="nama_ruangan" id="nama_ruangan" >
+      <div class="left-[30px] top-[200px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Pilih ruangan :</div>
+      <select class="w-[350px] h-[30px] left-[30px] top-[225px] absolute bg-stone-500 text-gray-800 px-2 p-1 rounded-bl-[15px] bg-opacity-30" name="nama_ruangan" id="nama_ruangan" >
         <option hidden>>>Pilih Ruangan<<</option>
         @foreach ($data_ruangan as $item)
         <option value="{{ $item->nama_ruangan }}">{{ $item->nama_ruangan }}</option>
         @endforeach
       </select>
 
-      <div class="left-[30px] top-[288px] absolute text-black text-[10px] font-normal font-['Inter']">Tanggal mulai</div>
+      <div class="left-[30px] top-[265px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Tanggal mulai</div>
       <!-- Tanggal -->
       <div class="relative max-w-sm">
         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -73,12 +73,12 @@
               <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
           </svg>
         </div>
-        <input datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-[138px] h-[30px] left-[32px] top-[310px] rounded-bl-[15px] absolute " name="tanggal" id="tanggal" placeholder="Select date" required>
+        <input datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-[138px] h-[30px] left-[32px] top-[290px] rounded-bl-[15px] absolute " name="tanggal" id="tanggal" placeholder="Select date" required>
      </div>
 
      <!-- waktu mulai -->
-     <div class="left-[196px] top-[288px] absolute text-black text-[10px] font-normal font-['Inter']">Mulai</div>
-     <select class="w-[85px] h-[30px] left-[195px] top-[311px] text-gray-100 px-2 p-1  rounded-bl-[15px] absolute bg-stone-500" name="waktu_mulai" id="waktu_mulai" required>
+     <div class="left-[196px] top-[265px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Waktu Mulai</div>
+     <select class="w-[85px] h-[30px] left-[195px] top-[290px] text-gray-100 px-2 p-1  rounded-bl-[15px] absolute bg-stone-500" name="waktu_mulai" id="waktu_mulai" required>
       <option value="08:00">08:00</option>
       <option value="09:00">09:00</option>
       <option value="10:00">10:00</option>
@@ -92,8 +92,8 @@
     </select>
 
     <!-- waktu selesai -->
-    <div class="left-[295px] top-[288px] absolute text-black text-[10px] font-normal font-['Inter']">Selesai</div>
-    <select class="w-[85px] h-[30px] left-[295px] top-[310px] text-gray-100 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500" name="waktu_selesai" id="waktu_selesai" required>
+    <div class="left-[295px] top-[265px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Waktu Selesai</div>
+    <select class="w-[85px] h-[30px] left-[295px] top-[290px] text-gray-100 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500" name="waktu_selesai" id="waktu_selesai" required>
       <option value="08:00">08:00</option>
       <option value="09:00">09:00</option>
       <option value="10:00">10:00</option>
@@ -107,25 +107,25 @@
     </select>
 
     <!-- Kegiatan -->
-    <div class="left-[32px] top-[350px] absolute text-black text-[10px] font-normal font-['Inter']">Kegiatan :</div>
-    <input class="w-[350px] h-[30px] left-[32px] top-[372px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="kegiatan" id="kegiatan" required>
+    <div class="left-[32px] top-[330px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Kegiatan :</div>
+    <input class="w-[350px] h-[30px] left-[32px] top-[355px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="kegiatan" id="kegiatan" required>
 
     <!-- Jumlah peserta -->
-    <div class="left-[30px] top-[410px] absolute text-black text-[10px] font-normal font-['Inter']">Jumlah peserta :</div>
-    <input class="w-40 h-[30px] left-[32px] top-[432px] text-gray-800 px-2 p-1  rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="jumlah_peserta" id="jumlah_peserta" type="number" required>
+    <div class="left-[30px] top-[395px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Jumlah peserta :</div>
+    <input class="w-40 h-[30px] left-[32px] top-[420px] text-gray-800 px-2 p-1  rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="jumlah_peserta" id="jumlah_peserta" type="number" required>
 
     <!-- Jumlah peserta -->
-    <div class="left-[220px] top-[410px] absolute text-black text-[10px] font-normal font-['Inter']">Jumlah panitia :</div>
-    <input class="w-40 h-[30px] left-[222px] top-[432px] text-gray-800 px-2 p-1  rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="jumlah_panitia" id="jumlah_panitia" type="number" required>
+    <div class="left-[220px] top-[395px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Jumlah panitia :</div>
+    <input class="w-40 h-[30px] left-[222px] top-[420px] text-gray-800 px-2 p-1  rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="jumlah_panitia" id="jumlah_panitia" type="number" required>
 
-    <div class="w-[30px] h-[30px] left-[30px] top-[472px] text-white text-center absolute rounded-bl-[20px] bg-orange-700">2</div>
+    <div class="w-[30px] h-[30px] left-[30px] top-[460px] text-white text-center absolute rounded-bl-[20px] bg-orange-700">2</div>
 
     <!-- Nama penanggung jawab -->
-    <div class="left-[32px] top-[512px] absolute text-black text-[10px] font-normal font-['Inter']">Nama penanggung jawab :</div>
-    <input class="w-[350px] h-[30px] left-[30px] top-[532px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="nama_penanggung_jawab" id="nama_penanggung_jawab" required>
+    <div class="left-[32px] top-[500px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Nama penanggung jawab :</div>
+    <input class="w-[350px] h-[30px] left-[30px] top-[525px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="nama_penanggung_jawab" id="nama_penanggung_jawab" required>
       
     <!-- Direktorat -->
-    <div class="left-[32px] top-[568px] absolute text-black text-[10px] font-normal font-['Inter']">Direktorat :</div>
+    <div class="left-[32px] top-[565px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Direktorat :</div>
     <select class="w-[350px] h-[30px] left-[30px] top-[590px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="direktorat" id="direktorat" >
       <option hidden>>>Pilih Direktorat<<</option>
         @foreach ($data_direktorat as $item)
@@ -134,38 +134,38 @@
     </select>
 
     <!-- Divisi -->
-    <div class="left-[32px] top-[630px] absolute text-black text-[10px] font-normal font-['Inter']">Divisi :</div>
-    <input class="w-[350px] h-[30px] left-[30px] top-[648px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="divisi" id="divisi" required>
+    <div class="left-[32px] top-[630px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Divisi :</div>
+    <input class="w-[350px] h-[30px] left-[30px] top-[655px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="divisi" id="divisi" required>
 
     <!-- Bagian -->
-    <div class="left-[30px] top-[686px] absolute text-black text-[10px] font-normal font-['Inter']">Bagian :</div>
-    <input class="w-[350px] h-[30px] left-[30px] top-[706px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="bagian" id="bagian" required>
+    <div class="left-[30px] top-[695px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Bagian :</div>
+    <input class="w-[350px] h-[30px] left-[30px] top-[720px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="bagian" id="bagian" required>
       
     <!-- Kebutuhan/pendukung --> 
-    <div class="left-[30px] top-[745px] absolute text-black text-[10px] font-normal font-['Inter']">Kebutuhan :</div>
+    <div class="left-[30px] top-[760px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Kebutuhan :</div>
     <div class="flex items-center">
-      <input id="pendukung" type="checkbox" name="pendukung" value="Videotron" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-bl-[10px] focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-800 left-[35px] top-[765px] absolute text-black text-sm font-normal font-['Inter']">
-      <label for="pendukung" class=" left-[60px] top-[765px] absolute text-black text-sm font-normal font-['Inter']">Videotron</label>
+      <input id="pendukung" type="checkbox" name="pendukung" value="Videotron" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-bl-[10px] focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-800 left-[35px] top-[780px] absolute text-black text-sm font-normal font-['Inter']">
+      <label for="pendukung" class=" left-[60px] top-[780px] absolute text-black text-sm font-normal font-['Inter']">Videotron</label>
     </div>
     <div class="flex items-center">
-      <input id="pendukung" type="checkbox" name="pendukung" value="Sound system" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-bl-[10px] focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-800 left-[35px] top-[790px] absolute text-black text-sm font-normal font-['Inter']">
-      <label for="pendukung" class=" left-[60px] top-[790px] absolute text-black text-sm font-normal font-['Inter']">Sound system</label>
+      <input id="pendukung" type="checkbox" name="pendukung" value="Sound system" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-bl-[10px] focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-800 left-[35px] top-[800px] absolute text-black text-sm font-normal font-['Inter']">
+      <label for="pendukung" class=" left-[60px] top-[800px] absolute text-black text-sm font-normal font-['Inter']">Sound system</label>
     </div>
     <div class="flex items-center">
-      <input id="pendukung" type="checkbox" name="pendukung" value="Online Meeting" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-bl-[10px] focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-800 left-[35px] top-[815px] absolute text-black text-sm font-normal font-['Inter']">
-      <label for="pendukung" class=" left-[60px] top-[815px] absolute text-black text-sm font-normal font-['Inter']">Online Meeting</label>
+      <input id="pendukung" type="checkbox" name="pendukung" value="Online Meeting" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-bl-[10px] focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-800 left-[35px] top-[820px] absolute text-black text-sm font-normal font-['Inter']">
+      <label for="pendukung" class=" left-[60px] top-[820px] absolute text-black text-sm font-normal font-['Inter']">Online Meeting</label>
     </div>
     <div class="flex items-center">
-      <input id="pendukung" type="checkbox" name="pendukung" value="Photography" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-bl-[10px] focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-800 left-[195px] top-[765px] absolute text-black text-sm font-normal font-['Inter']">
-      <label for="pendukung" class=" left-[225px] top-[765px] absolute text-black text-sm font-normal font-['Inter']">Photography</label>
+      <input id="pendukung" type="checkbox" name="pendukung" value="Photography" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-bl-[10px] focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-800 left-[195px] top-[780px] absolute text-black text-sm font-normal font-['Inter']">
+      <label for="pendukung" class=" left-[225px] top-[780px] absolute text-black text-sm font-normal font-['Inter']">Photography</label>
     </div>
     <div class="flex items-center">
-      <input id="pendukung" type="checkbox" name="pendukung" value="Videography" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-bl-[10px] focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-800 left-[195px] top-[790px] absolute text-black text-sm font-normal font-['Inter']">
-      <label for="pendukung" class=" left-[225px] top-[790px] absolute text-black text-sm font-normal font-['Inter']">Videography</label>
+      <input id="pendukung" type="checkbox" name="pendukung" value="Videography" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-bl-[10px] focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-800 left-[195px] top-[800px] absolute text-black text-sm font-normal font-['Inter']">
+      <label for="pendukung" class=" left-[225px] top-[800px] absolute text-black text-sm font-normal font-['Inter']">Videography</label>
     </div>
     <div class="flex items-center">
-      <input id="pendukung" type="checkbox" name="pendukung" value="Snack" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-bl-[10px] focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-800 left-[195px] top-[815px] absolute text-black text-sm font-normal font-['Inter']">
-      <label for="pendukung" class=" left-[225px] top-[815px] absolute text-black text-sm font-normal font-['Inter']">Snack</label>
+      <input id="pendukung" type="checkbox" name="pendukung" value="Snack" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-bl-[10px] focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-100 dark:border-gray-800 left-[195px] top-[820px] absolute text-black text-sm font-normal font-['Inter']">
+      <label for="pendukung" class=" left-[225px] top-[820px] absolute text-black text-sm font-normal font-['Inter']">Snack</label>
     </div>
 
     <!-- Status --> 

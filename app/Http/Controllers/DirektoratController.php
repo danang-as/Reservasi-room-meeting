@@ -13,7 +13,7 @@ class DirektoratController extends Controller
      */
     public function index()
     {
-        $data_direktorat = Direktorat::orderBy('id_direktorat', 'desc')->paginate(9);
+        $data_direktorat = Direktorat::orderBy('id', 'desc')->paginate(9);
         return view('admin.direktorat.data_direktorat')->with('data_direktorat', $data_direktorat);
     }
 
@@ -50,7 +50,7 @@ class DirektoratController extends Controller
      */
     public function edit(string $id)
     {
-        $data_direktorat = Direktorat::where('id_direktorat', $id)->first();
+        $data_direktorat = Direktorat::where('id', $id)->first();
         return view('admin.direktorat.edit_data_direktorat')->with('data_direktorat', $data_direktorat);
     }
 
@@ -62,7 +62,7 @@ class DirektoratController extends Controller
         $data_direktorat =[
             'nama_direktorat'  => $request->nama_direktorat,
         ];
-        Direktorat::where('id_direktorat', $id)->update($data_direktorat);
+        Direktorat::where('id', $id)->update($data_direktorat);
         return redirect()->to('data_direktorat');
     }
 
@@ -71,7 +71,7 @@ class DirektoratController extends Controller
      */
     public function destroy(string $id)
     {
-        Direktorat::where('id_direktorat', $id)->delete();
+        Direktorat::where('id', $id)->delete();
         return redirect()->to('data_direktorat');
     }
 }

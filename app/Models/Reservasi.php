@@ -10,7 +10,7 @@ class Reservasi extends Model
     use HasFactory;
     protected $table = 'reservasi';
     protected $fillable = [
-        'id_reservasi',
+        'id',
         'kode_booking',
         'nama_penanggung_jawab',
         'tanggal',

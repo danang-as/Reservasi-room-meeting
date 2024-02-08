@@ -14,7 +14,7 @@ class RuanganController extends Controller
      */
     public function index()
     {
-        $data_ruangan = Ruangan::orderBy('id_ruangan', 'desc')->paginate(9);
+        $data_ruangan = Ruangan::orderBy('id', 'desc')->paginate(9);
         return view('admin.ruangan.data_ruangan')->with('data_ruangan', $data_ruangan);
     }
     /**
@@ -51,7 +51,7 @@ class RuanganController extends Controller
      */
     public function edit(string $id)
     {
-        $data_ruangan = Ruangan::where('id_ruangan', $id)->first();
+        $data_ruangan = Ruangan::where('id', $id)->first();
         return view('admin.ruangan.edit_data_ruangan')->with('data_ruangan', $data_ruangan);
     }
 
@@ -64,7 +64,7 @@ class RuanganController extends Controller
             'nama_ruangan'  => $request->nama_ruangan,
             'kapasitas_ruangan' => $request->kapasitas_ruangan,
         ];
-        Ruangan::where('id_ruangan', $id)->update($data_ruangan);
+        Ruangan::where('id', $id)->update($data_ruangan);
         return redirect()->to('data_ruangan');
     }
 
@@ -73,7 +73,7 @@ class RuanganController extends Controller
      */
     public function destroy(string $id)
     {
-        Ruangan::where('id_ruangan', $id)->delete();
+        Ruangan::where('id', $id)->delete();
         return redirect()->to('data_ruangan');
     }
 }

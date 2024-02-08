@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Ruangan;
+use App\Models\Reservasi;
 use App\Models\Direktorat;
 
-class ReservasiController extends Controller
+class ReservasiAdminController extends Controller
 {
     public function index()
     {
-        $data_ruangan = Ruangan::get();
-        return view('admin.reservasi.data_reservasi',compact('data_ruangan'));
+        $reservasi = Reservasi::orderBy('id', 'desc')->paginate(9);
+        return view('admin.laporan.data_laporan')->with('reservasi', $reservasi);
     }
 
     public function create()

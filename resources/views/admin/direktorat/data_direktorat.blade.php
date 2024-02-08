@@ -45,8 +45,8 @@
                         <td>{{$i}}</td>
                         <td>{{$item->nama_direktorat}}</td>
                         <td>
-                          <a href="{{ url('data_direktorat/'.$item->id_direktorat.'/edit')}}" class="btn btn-primary ml-3 font-bold"><i class="fas fa-pen-square mr-2"></i>Edit</a>
-                          <form  onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('data_direktorat/'.$item->id_direktorat)}}" method="post">
+                          <a href="{{ url('data_direktorat/'.$item->id.'/edit')}}" class="btn btn-primary ml-3 font-bold"><i class="fas fa-pen-square mr-2"></i>Edit</a>
+                          <form  onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('data_direktorat/'.$item->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit" name="submit" class="btn btn-danger font-bold"><i class="fas fa-trash-alt"></i>Hapus</button>
