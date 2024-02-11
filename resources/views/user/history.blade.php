@@ -54,33 +54,25 @@
                           <th>Ruang</th>
                           <th>Tanggal</th>
                           <th>Waktu</th>
+                          <th>Status</th>
                         </tr>
                       </thead>
-                    <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>RM100001</td>
-                          <td>Danang</td>
-                          <td>Amanah</td>
-                          <td>1 Januari 2001</td>
-                          <td>08:00 - 10:00</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>RM100002</td>
-                          <td>Syatiri</td>
-                          <td>Takwa</td>
-                          <td>2 Januari 2002</td>
-                          <td>08:00 - 10:00</td>
-                        </tr> 
-                        <tr>
-                          <td>1</td>
-                          <td>RM100003</td>
-                          <td>Arrrr</td>
-                          <td>Tawakal</td>
-                          <td>3 Januari 2003</td>
-                          <td>08:00 - 10:00</td>
-                        </tr> 
+                      <tbody>
+                        <?php $i = $reservasi->firstItem() ?>
+                      @foreach($reservasi as $row)
+                          <tr>
+                              <td>{{$i}}</td>
+                              <td>{{$row->kode_booking}}</td>
+                              <td>{{$row->nama_penanggung_jawab}}</td>
+                              <td>{{$row->nama_ruangan}}</td>
+                              <td>{{$row->tanggal}}</td>
+                              <td>{{$row->waktu_mulai}}-  {{$row->waktu_selesai}}</td>
+                              <td>{{$row->status}}</td>
+                 
+                          </tr>
+                          <?php $i++ ?>
+                      @endforeach
+                       
                     </tbody>
                     </table>
 </div>

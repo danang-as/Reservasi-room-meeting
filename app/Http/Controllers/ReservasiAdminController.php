@@ -32,7 +32,7 @@ class ReservasiAdminController extends Controller
             'tanggal' => $request->tanggal,
             'waktu_mulai' => $request->waktu_mulai,
             'waktu_selesai' => $request->waktu_selesai,
-            // 'kegiatan' => $request->kegiatan,
+            'kegiatan' => $request->kegiatan,
             'jumlah_peserta' => $request->jumlah_peserta,
             'jumlah_panitia' => $request->jumlah_panitia,
             'nama_ruangan' => $request->nama_ruangan,

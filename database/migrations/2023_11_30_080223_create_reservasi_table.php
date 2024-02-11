@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('divisi');
             $table->string('bagian');
             $table->string('pendukung');
-            $table->enum('status',['tidak tersedia','tersedia'])->default('tersedia');
+            $table->enum('status',['diproses','konfirmasi'])->default('diproses');
             $table->timestamps();
         });
     }

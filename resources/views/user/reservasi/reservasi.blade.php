@@ -56,6 +56,8 @@
 
       <div class="w-[30px] h-[30px] left-[30px] top-[160px] text-white text-center absolute rounded-bl-[20px] bg-orange-700">1</div>
 
+      <input class="hidden" value="kosong2"  name="kode_booking" >
+
       <!-- Pilih Ruangan -->
       <div class="left-[30px] top-[200px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Pilih ruangan :</div>
       <select class="w-[350px] h-[30px] left-[30px] top-[225px] absolute bg-stone-500 text-gray-800 px-2 p-1 rounded-bl-[15px] bg-opacity-30" name="nama_ruangan" id="nama_ruangan" >
@@ -108,7 +110,7 @@
 
     <!-- Kegiatan -->
     <div class="left-[32px] top-[330px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Kegiatan :</div>
-    <input class="w-[350px] h-[30px] left-[32px] top-[355px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="kegiatan" id="kegiatan" required>
+    <input class="w-[350px] h-[30px] left-[32px] top-[355px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30"value="" name="kegiatan" id="kegiatan" required>
 
     <!-- Jumlah peserta -->
     <div class="left-[30px] top-[395px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Jumlah peserta :</div>
@@ -116,7 +118,7 @@
 
     <!-- Jumlah peserta -->
     <div class="left-[220px] top-[395px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Jumlah panitia :</div>
-    <input class="w-40 h-[30px] left-[222px] top-[420px] text-gray-800 px-2 p-1  rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="jumlah_panitia" id="jumlah_panitia" type="number" required>
+    <input class="w-40 h-[30px] left-[222px] top-[420px] text-gray-800 px-2 p-1  rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="jumlah_panitia" id="jumlah_panitia" type="number" required>
 
     <div class="w-[30px] h-[30px] left-[30px] top-[460px] text-white text-center absolute rounded-bl-[20px] bg-orange-700">2</div>
 
@@ -126,7 +128,7 @@
       
     <!-- Direktorat -->
     <div class="left-[32px] top-[565px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Direktorat :</div>
-    <select class="w-[350px] h-[30px] left-[30px] top-[590px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="direktorat" id="direktorat" >
+    <select class="w-[350px] h-[30px] left-[30px] top-[590px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" value="" name="direktorat" id="direktorat" >
       <option hidden>>>Pilih Direktorat<<</option>
         @foreach ($data_direktorat as $item)
         <option value="{{ $item->nama_direktorat }}">{{ $item->nama_direktorat }}</option>

@@ -11,17 +11,15 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Validator;
 
-class ReservasiUserController extends Controller
+class HistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data_ruangan = Ruangan::all();
-        $data_direktorat = Direktorat::all();
         $reservasi = Reservasi::all();
-        return view('user.reservasi.reservasi', compact('reservasi', 'data_ruangan', 'data_direktorat'));
+        return view('user.history')->with('history', $reservasi);
     }
 
     /**
@@ -38,11 +36,11 @@ class ReservasiUserController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'kode_booking' => 'required|unique:reservasi',
+            'kode_booking' => 'required',
             'nama_penanggung_jawab' => 'required',
             'tanggal' => 'required|date',
-            'waktu_mulai' => 'required|date_format:H:i',
-            'waktu_selesai' => 'required|date_format:H:i|after:waktu_mulai',
+            'waktu_mulai' => 'required',
+            'waktu_selesai' => 'required',
             'kegiatan' => 'required',
             'jumlah_peserta' => 'required|numeric',
             'jumlah_panitia' => 'required|numeric',

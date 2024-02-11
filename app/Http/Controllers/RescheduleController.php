@@ -8,6 +8,7 @@ use App\Models\Reservasi;
 use App\Models\Ruangan;
 use App\Models\Direktorat;
 
+
 class RescheduleController extends Controller
 {
     /**
@@ -18,7 +19,7 @@ class RescheduleController extends Controller
         $data_ruangan = Ruangan::all();
         $data_direktorat = Direktorat::all();
         $reservasi = Reservasi::all();
-        return view('user.reschedule.reschedule', compact('reservasi','data_ruangan', 'data_direktorat'));
+        return view('user.reschedule.reschedule', compact('reservasi', 'data_ruangan', 'data_direktorat'));
     }
 
     /**
@@ -35,11 +36,11 @@ class RescheduleController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'kode_booking' => 'required|unique:reservasi',
+            'kode_booking' => 'required',
             'nama_penanggung_jawab' => 'required',
             'tanggal' => 'required|date',
-            'waktu_mulai' => 'required|date_format:H:i',
-            'waktu_selesai' => 'required|date_format:H:i|after:waktu_mulai',
+            'waktu_mulai' => 'required',
+            'waktu_selesai' => 'required',
             'kegiatan' => 'required',
             'jumlah_peserta' => 'required|numeric',
             'jumlah_panitia' => 'required|numeric',
@@ -54,11 +55,13 @@ class RescheduleController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        $tanggal = Carbon::createFromFormat('m/d/Y', $request->tanggal)->format('Y-m-d');
+        $pendukung_array = explode(',', $request->pendukung);
         $kode_booking = Str::random(5);
         $reservasi = Reservasi::create([
-            'kode_booking' => $request->kode_booking,
+            'kode_booking' => $kode_booking,
             'nama_penanggung_jawab' => $request->nama_penanggung_jawab,
-            'tanggal' => $request->tanggal,
+            'tanggal' => $tanggal,
             'waktu_mulai' => $request->waktu_mulai,
             'waktu_selesai' => $request->waktu_selesai,
             'kegiatan' => $request->kegiatan,
@@ -68,42 +71,39 @@ class RescheduleController extends Controller
             'direktorat' => $request->direktorat,
             'divisi' => $request->divisi,
             'bagian' => $request->bagian,
-            'status' => $request->status,
-            'pendukung' => implode(', ', $request->pendukung),
+            'pendukung' => implode('', $pendukung_array)
         ]);
+        
+        return redirect()->to('history')->with('success', 'Reservasi berhasil ditambahkan');
 
-        return redirect()->route('user.reschedule.reschedule')->with('success', 'reschedule berhasil ditambahkan');
+        // try {
+        //     Log::error("tidak muncul errornya");
+        //     Reservasi::create($reservasi);
+            
+        //     // return redirect()->route('user.reservasi.reservasi')->with('success', 'Reservasi berhasil ditambahkan');
+        // } catch (\Exception $e) {
+        //     Log::error($e->getMessage()); // Ini akan mencetak pesan exception ke dalam log
+        //     // return redirect()->back()->with('error', 'Gagal menambahkan reservasi: ' . $e->getMessage())->withInput();
+        // }
+
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+    public function getAvailableTime(Request $request)
+{
+    $tanggal = $request->input('tanggal');
+    $waktu_mulai = $request->input('waktu_mulai');
+    $waktu_selesai = $request->input('waktu_selesai');
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+    $reservasi = Reservasi::where('tanggal', $tanggal)->where(function ($query) use ($waktu_mulai, $waktu_selesai) {
+        $query->whereBetween('waktu_mulai', [$waktu_mulai, $waktu_selesai])
+            ->orWhereBetween('waktu_selesai', [$waktu_mulai, $waktu_selesai]);
+    })->get();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    $pendukung = $request->input('pendukung');
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    return response()->json([
+        'reservasi' => $reservasi,
+        'pendukung' => $pendukung,
+    ]);
+}
 }
