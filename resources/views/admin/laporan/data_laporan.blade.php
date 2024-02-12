@@ -49,24 +49,24 @@
                       </tr>
                   </thead>
                   <tbody>
-                    <?php $i = $reservasi->firstItem() ?>
-                      @foreach($reservasi as $row)
+                    <?php $i = $data_laporan->firstItem() ?>
+                      @foreach($data_laporan as $rw)
                           <tr>
                               <td>{{$i}}</td>
-                              <td>{{ $row->kode_booking }}</td>
-                              <td>{{ $row->nama_penanggung_jawab }}</td>
-                              <td>{{ $row->tanggal }}</td>
-                              <td>{{ $row->waktu_mulai }}</td>
-                              <td>{{ $row->waktu_selesai }}</td>
-                              <td>{{ $row->kegiatan }}</td>
-                              <td>{{ $row->jumlah_peserta }}</td>
-                              <td>{{ $row->jumlah_panitia }}</td>
-                              <td>{{ $row->nama_ruangan }}</td>
-                              <td>{{ $row->direktorat }}</td>
-                              <td>{{ $row->divisi }}</td>
-                              <td>{{ $row->bagian }}</td>
-                              <td>{{ $row->pendukung }}</td>
-                              <td>{{ $row->status }}</td>
+                              <td>{{ $rw->kode_booking }}</td>
+                              <td>{{ $rw->nama_penanggung_jawab }}</td>
+                              <td>{{ $rw->tanggal }}</td>
+                              <td>{{ $rw->waktu_mulai }}</td>
+                              <td>{{ $rw->waktu_selesai }}</td>
+                              <td>{{ $rw->kegiatan }}</td>
+                              <td>{{ $rw->jumlah_peserta }}</td>
+                              <td>{{ $rw->jumlah_panitia }}</td>
+                              <td>{{ $rw->nama_ruangan }}</td>
+                              <td>{{ $rw->direktorat }}</td>
+                              <td>{{ $rw->divisi }}</td>
+                              <td>{{ $rw->bagian }}</td>
+                              <td>{{ $rw->pendukung }}</td>
+                              <td>{{ $rw->status }}</td>
                           </tr>
                           <?php $i++ ?>
                       @endforeach

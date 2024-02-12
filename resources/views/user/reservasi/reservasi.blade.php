@@ -173,7 +173,7 @@
     <!-- Status --> 
     <div id="status" name="status" value="tidak tersedia"></div>
     
-      <button type="submit" onclick="window.location='{{ url('home') }}'" class="w-20 h-10 left-[32px] top-[850px] text-white absolute rounded-bl-[30px] bg-blue-950">Back</button>
+      <button  onclick="window.location='{{ url('home') }}'" class="w-20 h-10 left-[32px] top-[850px] text-white absolute rounded-bl-[30px] bg-blue-950">Back</button>
       <button type="submit" name="submit" class="w-20 h-10 left-[300px] top-[850px] text-white absolute rounded-br-[30px] bg-blue-950">Kirim</button>
     </div>
       <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>

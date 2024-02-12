@@ -15,8 +15,8 @@ class LaporanController extends Controller
      */
     public function index()
     {
-        $reservasi = Reservasi::orderBy('id', 'desc')->paginate(9);
-        return view('admin.laporan.data_laporan')->with('reservasi', $reservasi);
+        $data_laporan = Reservasi::orderBy('id', 'desc')->paginate(9);
+        return view('admin.laporan.data_laporan')->with('data_laporan', $data_laporan);
     }
 
     /**

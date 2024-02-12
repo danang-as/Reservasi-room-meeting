@@ -47,11 +47,12 @@
                           <th>Bagian</th>
                           <th>Pendukung</th>
                           <th>Status</th>
+                          <th>action</th>
                       </tr>
                   </thead>
                   <tbody>
-                    <?php $i = $reservasi->firstItem() ?>
-                      @foreach($reservasi as $row)
+                    <?php $i = $data_reservasi->firstItem() ?>
+                      @foreach($data_reservasi as $row)
                           <tr>
                               <td>{{$i}}</td>
                               <td>{{ $row->kode_booking }}</td>
@@ -68,6 +69,14 @@
                               <td>{{ $row->bagian }}</td>
                               <td>{{ $row->pendukung }}</td>
                               <td>{{ $row->status }}</td>
+                              <td>
+                                <a href="{{ url('data_reservasi/'.$row->id.'/edit')}}" class="btn btn-primary ml-3 font-bold"><i class="fas fa-pen-square mr-2"></i>Edit</a>
+                                <form  onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('data_reservasi/'.$row->id)}}" method="post">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" name="submit" class="btn btn-danger font-bold"><i class="fas fa-trash-alt"></i>Hapus</button>
+                                </form>
+                              </td>
                           </tr>
                           <?php $i++ ?>
                       @endforeach
