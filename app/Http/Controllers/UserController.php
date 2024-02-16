@@ -12,7 +12,8 @@ class UserController extends Controller
 {
     public function home()
     {
-        return view('user.home');
+        $reservasi = Reservasi::all();
+        return view('user.home', compact('reservasi'));
     }
 
     public function tampilan_utama()

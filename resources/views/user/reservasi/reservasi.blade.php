@@ -38,17 +38,20 @@
       <!-- Dropdown menu -->
       <div id="dropdownDotsHorizontal" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
-          <li>
+          {{-- <li>
             <a href="{{url('reservasi')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reservasi</a>
-          </li>
+          </li> --}}
+          @foreach($reservasi as $row)
           <li>
-            <a href="{{url('reschedule')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reschedule</a>
+            <a href="{{ url('reservasi/'.$row->id.'/edit')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reschedule</a>
           </li>
+          @endforeach
           <li>
               <a href="{{url('login_user')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
           </li>
         </ul>
       </div>
+      
 
       <img class="w-[49px] h-11 left-[21px] top-[30px] absolute" src="../img/logo_pos.png" />
 
@@ -57,7 +60,7 @@
       <div class="w-[30px] h-[30px] left-[30px] top-[160px] text-white text-center absolute rounded-bl-[20px] bg-orange-700">1</div>
 
       <input class="hidden" value="kosong2"  name="kode_booking" >
-
+      
       <!-- Pilih Ruangan -->
       <div class="left-[30px] top-[200px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Pilih ruangan :</div>
       <select class="w-[350px] h-[30px] left-[30px] top-[225px] absolute bg-stone-500 text-gray-800 px-2 p-1 rounded-bl-[15px] bg-opacity-30" name="nama_ruangan" id="nama_ruangan" >
@@ -173,7 +176,7 @@
     <!-- Status --> 
     <div id="status" name="status" value="tidak tersedia"></div>
     
-      <button  onclick="window.location='{{ url('home') }}'" class="w-20 h-10 left-[32px] top-[850px] text-white absolute rounded-bl-[30px] bg-blue-950">Back</button>
+      <a  href="{{url('home')}}" class="w-20 h-10 left-[32px] top-[850px] text-white absolute rounded-bl-[30px] bg-blue-950">Back</a>
       <button type="submit" name="submit" class="w-20 h-10 left-[300px] top-[850px] text-white absolute rounded-br-[30px] bg-blue-950">Kirim</button>
     </div>
       <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
@@ -223,71 +226,9 @@
             });
         });
         </script> --}}
-  </form>
-      
-      <!-- <div class="relative" id="timepicker-inline-12" data-te-input-wrapper-init>
-          <input type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary w-[85px] h-[30px] left-[195px] top-[311px] rounded-bl-[15px] absolute bg-stone-500 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="form2" />
-          <label for="form2" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary" >Select a time</label>
-      </div> -->
-      <!-- <div class="w-[85px] h-[30px] left-[195px] top-[311px] rounded-bl-[15px] absolute bg-stone-500"></div>
-      <div class="w-[85px] h-[30px] left-[295px] top-[310px] rounded-bl-[15px] absolute bg-stone-500"></div> -->
-      
-      <!-- <div class="relative" id="timepicker-inline-12" data-te-input-wrapper-init>
-          <input type="text" class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary w-[85px] h-[30px] left-[295px] top-[310px] rounded-bl-[15px] absolute bg-stone-500 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" id="form2" />
-          <label for="form2" class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary" >Select a time</label>
-      </div> -->
-
         
-
-      <!-- Button -->
-      
-
-  {{-- <div class="content w-[412px] absolute top-0 left-0 bg-blue-950">
-    <img class="w-[49px] h-11 left-[21px] top-[30px] absolute" src="../img/logo_pos.png" />
-    <button id="dropdownMenuIconHorizontalButton" data-dropdown-toggle="dropdownDotsHorizontal" class="w-[60px] h-[47px] left-[324px] top-[29px] inline-flex items-center px-5 p-2 text-sm font-medium text-center text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-bl-[15px] absolute" type="button">
-      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-        <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
-      </svg>
-    </button>
-     <!-- Dropdown menu -->
-    <div id="dropdownDotsHorizontal" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-40 relative r-[60px] dark:bg-gray-700 dark:divide-gray-600">
-          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
-            <li>
-              <a href="{{url('reservasi')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reservasi</a>
-            </li>
-            <li>
-              <a href="{{url('reschedule')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reschedule</a>
-            </li>
-            <li>
-                <a href="{{url('login_user')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
-            </li>
-          </ul>
-   </div>
-    <div class="header relative left-[21px]  top-[90px]  text-black text-[40px] font-normal font-['Inter']"> Reservasi</div>
-    <div class="content w-[378px] relative left-[21px] top-[150px] bg-zinc-300">
-      <div class="form-group ">
-        <div class="sticky top-0 w-[30px] h-[30px] text-white text-center rounded-bl-[45%] bg-orange-700">1</div>
-        <div >
-          <div>
-            <strong>Andrew Alfred</strong>
-          </div>
-        <div>
-          <strong></strong>
-        </div>
-        <!-- ... -->
-      </div>
-    </div>
-      <div>
-        <div class="sticky top-0 w-[30px] h-[30px]  text-white text-center rounded-bl-[45%] bg-orange-700">2</div>
-          <div>
-            <div>
-            <strong>Bob Alfred</strong>
-          </div>
-         </div>
-        </div>
-      </div>
-    </div>
-  </div> --}}
+  </form>
+  
   </body>
   
     

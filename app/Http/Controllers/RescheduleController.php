@@ -16,52 +16,55 @@ class RescheduleController extends Controller
      */
     public function index()
     {
-        $data_ruangan = Ruangan::all();
-        $data_direktorat = Direktorat::all();
-        $reservasi = Reservasi::all();
-        return view('user.reschedule.reschedule', compact('reservasi', 'data_ruangan', 'data_direktorat'));
+        $data_reschedule = Reservasi::orderBy('id', 'desc')->paginate(9);
+        return view('admin.reschedule.data_reschedule')->with('data_reschedule', $data_reschedule);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('user.reschedule.reschedule');
+        return view('admin.reschedule.tambah_reschedule');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'kode_booking' => 'required',
-            'nama_penanggung_jawab' => 'required',
-            'tanggal' => 'required|date',
-            'waktu_mulai' => 'required',
-            'waktu_selesai' => 'required',
-            'kegiatan' => 'required',
-            'jumlah_peserta' => 'required|numeric',
-            'jumlah_panitia' => 'required|numeric',
-            'nama_ruangan' => 'required',
-            'direktorat' => 'required',
-            'divisi' => 'required',
-            'bagian' => 'required',
-            'status' => '',
-            'pendukung' => 'required',
-        ]);
+        // $data_reservasi = [
+        //     'kode_booking' => $request->kode_booking,
+        //     'nama_penanggung_jawab' => $request->nama_penanggung_jawab,
+        //     'tanggal' => $request->tanggal,
+        //     'waktu_mulai' => $request->waktu_mulai,
+        //     'waktu_selesai' => $request->waktu_selesai,
+        //     'kegiatan' => $request->kegiatan,
+        //     'jumlah_peserta' => $request->jumlah_peserta,
+        //     'jumlah_panitia' => $request->jumlah_panitia,
+        //     'nama_ruangan' => $request->nama_ruangan,
+        //     'direktorat' => $request->direktorat,
+        //     'divisi' => $request->divisi,
+        //     'bagian' => $request->bagian,
+        //     'pendukung' => $request->pendukung,
+        // ];
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-        $tanggal = Carbon::createFromFormat('m/d/Y', $request->tanggal)->format('Y-m-d');
-        $pendukung_array = explode(',', $request->pendukung);
-        $kode_booking = Str::random(5);
-        $reservasi = Reservasi::create([
-            'kode_booking' => $kode_booking,
+        // Reservasi::create($data_reservasi);
+
+        // return redirect()->route('konfrim_reservasi')->with('success', 'Reservasi berhasil ditambahkan');
+    }
+
+    public function show($id)
+    {
+        
+    }
+
+    public function edit(string $id)
+    {
+        $data_reschedule = Reservasi::where('id', $id)->first();
+        return view('admin.reschedule.edit_data_reschedule')->with('data_reschedule', $data_reschedule);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data_reschedule =[
+            'kode_booking' => $request->kode_booking,
             'nama_penanggung_jawab' => $request->nama_penanggung_jawab,
-            'tanggal' => $tanggal,
+            'tanggal' => $request->tanggal,
             'waktu_mulai' => $request->waktu_mulai,
             'waktu_selesai' => $request->waktu_selesai,
             'kegiatan' => $request->kegiatan,
@@ -71,39 +74,43 @@ class RescheduleController extends Controller
             'direktorat' => $request->direktorat,
             'divisi' => $request->divisi,
             'bagian' => $request->bagian,
-            'pendukung' => implode('', $pendukung_array)
-        ]);
-        
-        return redirect()->to('history')->with('success', 'Reservasi berhasil ditambahkan');
+            'pendukung' => $request->pendukung,
+            'status' => $request->status,
+        ];
+        Reservasi::where('id', $id)->update($data_reschedule);
+        return redirect()->to('data_reschedule');
+        // $request->validate([
+        //     'kode_booking' => 'required',
+        //     'nama_penanggung_jawab' => 'required',
+        //     'tanggal' => 'required|date',
+        //     'waktu_mulai' => 'required',
+        //     'waktu_selesai' => 'required',
+        //     'kegiatan' => 'required',
+        //     'jumlah_peserta' => 'required',
+        //     'jumlah_panitia' => 'required',
+        //     'nama_ruangan' => 'required',
+        //     'direktorat' => 'required',
+        //     'divisi' => 'required',
+        //     'bagian' => 'required',
+        //     'pendukung' => 'required',
+        // ]);
 
-        // try {
-        //     Log::error("tidak muncul errornya");
-        //     Reservasi::create($reservasi);
-            
-        //     // return redirect()->route('user.reservasi.reservasi')->with('success', 'Reservasi berhasil ditambahkan');
-        // } catch (\Exception $e) {
-        //     Log::error($e->getMessage()); // Ini akan mencetak pesan exception ke dalam log
-        //     // return redirect()->back()->with('error', 'Gagal menambahkan reservasi: ' . $e->getMessage())->withInput();
-        // }
+        // $reservasi = Reservasi::findOrFail($id);
+        // $reservasi->update($request->all());
 
+        // return redirect()->route('reservasis.index')->with('success', 'Reservasi berhasil diperbarui');
     }
 
-    public function getAvailableTime(Request $request)
-{
-    $tanggal = $request->input('tanggal');
-    $waktu_mulai = $request->input('waktu_mulai');
-    $waktu_selesai = $request->input('waktu_selesai');
+    // public function destroy($id)
+    // {
+    //     $reservasi = Reservasi::findOrFail($id);
+    //     $reservasi->delete();
 
-    $reservasi = Reservasi::where('tanggal', $tanggal)->where(function ($query) use ($waktu_mulai, $waktu_selesai) {
-        $query->whereBetween('waktu_mulai', [$waktu_mulai, $waktu_selesai])
-            ->orWhereBetween('waktu_selesai', [$waktu_mulai, $waktu_selesai]);
-    })->get();
-
-    $pendukung = $request->input('pendukung');
-
-    return response()->json([
-        'reservasi' => $reservasi,
-        'pendukung' => $pendukung,
-    ]);
-}
+    //     return redirect()->route('reservasis.index')->with('success', 'Reservasi berhasil dihapus');
+    // }
+    public function destroy(string $id)
+    {
+        Reservasi::where('id', $id)->delete();
+        return redirect()->to('data_reschedule');
+    }
 }

@@ -97,12 +97,17 @@ class ReservasiAdminController extends Controller
         // return redirect()->route('reservasis.index')->with('success', 'Reservasi berhasil diperbarui');
     }
 
-    public function destroy($id)
-    {
-        $reservasi = Reservasi::findOrFail($id);
-        $reservasi->delete();
+    // public function destroy($id)
+    // {
+    //     $reservasi = Reservasi::findOrFail($id);
+    //     $reservasi->delete();
 
-        return redirect()->route('reservasis.index')->with('success', 'Reservasi berhasil dihapus');
+    //     return redirect()->route('reservasis.index')->with('success', 'Reservasi berhasil dihapus');
+    // }
+    public function destroy(string $id)
+    {
+        Reservasi::where('id', $id)->delete();
+        return redirect()->to('data_reservasi');
     }
 
     // private function generateRandomString($length = 10)

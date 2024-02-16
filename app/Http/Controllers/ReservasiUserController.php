@@ -108,4 +108,51 @@ class ReservasiUserController extends Controller
         'pendukung' => $pendukung,
     ]);
 }
+public function edit(string $id)
+    {
+        $reservasi = Reservasi::where('id', $id)->first();
+        return view('user.reservasi.reschedule')->with('reservasi', $reservasi);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $reservasi =[
+            'kode_booking' => $request->kode_booking,
+            'nama_penanggung_jawab' => $request->nama_penanggung_jawab,
+            'tanggal' => $request->tanggal,
+            'waktu_mulai' => $request->waktu_mulai,
+            'waktu_selesai' => $request->waktu_selesai,
+            'kegiatan' => $request->kegiatan,
+            'jumlah_peserta' => $request->jumlah_peserta,
+            'jumlah_panitia' => $request->jumlah_panitia,
+            'nama_ruangan' => $request->nama_ruangan,
+            'direktorat' => $request->direktorat,
+            'divisi' => $request->divisi,
+            'bagian' => $request->bagian,
+            'pendukung' => $request->pendukung,
+            'status' => $request->status,
+        ];
+        Reservasi::where('id', $id)->update($reservasi);
+        return redirect()->to('history');
+        // $request->validate([
+        //     'kode_booking' => 'required',
+        //     'nama_penanggung_jawab' => 'required',
+        //     'tanggal' => 'required|date',
+        //     'waktu_mulai' => 'required',
+        //     'waktu_selesai' => 'required',
+        //     'kegiatan' => 'required',
+        //     'jumlah_peserta' => 'required',
+        //     'jumlah_panitia' => 'required',
+        //     'nama_ruangan' => 'required',
+        //     'direktorat' => 'required',
+        //     'divisi' => 'required',
+        //     'bagian' => 'required',
+        //     'pendukung' => 'required',
+        // ]);
+
+        // $reservasi = Reservasi::findOrFail($id);
+        // $reservasi->update($request->all());
+
+        // return redirect()->route('reservasis.index')->with('success', 'Reservasi berhasil diperbarui');
+    }
 }

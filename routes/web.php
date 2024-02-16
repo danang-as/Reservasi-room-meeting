@@ -34,11 +34,12 @@ Route::resource('data_direktorat', DirektoratController::class);
 Route::resource('data_user', DatauserController::class);
 Route::resource('data_reservasi', ReservasiAdminController::class);
 Route::resource('data_laporan', LaporanController::class);
+Route::resource('data_reschedule', RescheduleController::class);
     });   
 });
 
 
-Route::resource('reschedule', RescheduleController::class);
+
 Route::post('reservasi/get-available-time', [ReservasiUserController::class, 'getAvailableTime'])->name('reservasi.getAvailableTime');
 
 Route::prefix('/')->namespace('App\Http\Controllers')->group(function(){

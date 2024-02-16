@@ -55,13 +55,31 @@
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{{ url('data_reschedule') }}"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-border-inside"></i
+                  ><span class="hide-menu">Data Reschedule</span></a
+                >
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
                   href="{{ url('data_laporan') }}"
                   aria-expanded="false"
                   ><i class="far fa-file-excel"></i
                   ><span class="hide-menu">Laporan</span></a
                 >
               </li>
-              <li class="sidebar-item p-3">
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{{url('login')}}"
+                  aria-expanded="false"
+                  ><i class="far fa-sign-out"></i
+                  ><span class="hide-menu">Log Out</span></a
+                >
+              </li>
+              {{-- <li class="sidebar-item p-3">
                 <a
                   href="https://github.com/wrappixel/matrix-admin-bt5"
                   target="_blank"
@@ -75,7 +93,7 @@
                   ><i class="mdi mdi-cloud-download font-20 me-2"></i>Download
                   Free</a
                 >
-              </li>
+              </li>  --}}
             </ul>
           </nav>
           <!-- End Sidebar navigation -->

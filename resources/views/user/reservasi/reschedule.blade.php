@@ -20,8 +20,12 @@
     @vite('resources/css/app.css')
 </head>
 <body>
+  <img class="w-[50px] h-[47.06px] left-[16px] top-[29px] absolute" src="../img/logo_pos.png" />
+  <form action="{{url('reservasi/'.$reservasi->id)}}" method="post">
+    @csrf
+    @method('PUT')
 <div class="w-[412px] h-[915px] relative bg-blue-950">
-    <img class="w-[50px] h-[47.06px] left-[16px] top-[29px] absolute" src="../img/logo_pos.png" />
+    
 
     <!-- dropdownButton -->
     <button id="dropdownMenuIconHorizontalButton" data-dropdown-toggle="dropdownDotsHorizontal" class="w-[60px] h-[47px] left-[324px] top-[29px] inline-flex items-center px-5 p-2 text-sm font-medium text-center text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-bl-[15px] absolute" type="button">
@@ -36,9 +40,9 @@
             <li>
               <a href="{{url('reservasi')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reservasi</a>
             </li>
-            <li>
+            {{-- <li>
               <a href="{{url('reschedule')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reschedule</a>
-             </li>
+             </li> --}}
             <li>
               <a href="{{url('login_user')}}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
                        </li>
@@ -54,20 +58,19 @@
       <!-- Kode Booking -->
       <div class="left-[30px] top-[185px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Kode booking :</div>
       <select class="w-[350px] h-[30px] left-[30px] top-[205px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="kode_booking" id="kode_booking">
-        <option hidden>>>kode_booking<<</option>
-        @foreach ($reservasi as $item)
-        <option value="{{ $item->kode_booking }}">{{ $item->kode_booking }}</option>
-        @endforeach
+      
+        
+        <option value="{{ $reservasi->kode_booking }}">{{ $reservasi->kode_booking }}</option>
       </select>
       
 
       <!-- Pilih ruangan -->
       <div class="left-[30px] top-[240px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Pilih ruangan :</div>
       <select class="w-[350px] h-[30px] left-[30px] top-[260px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="nama_ruangan" id="nama_ruangan">
-        <option hidden>>>Pilih Ruangan<<</option>
-        @foreach ($data_ruangan as $item)
-        <option value="{{ $item->nama_ruangan }}">{{ $item->nama_ruangan }}</option>
-        @endforeach
+      
+        
+        <option value="{{ $reservasi->nama_ruangan }}">{{ $reservasi->nama_ruangan }}</option>
+        
       </select>
 
       <!-- Tanggal -->
@@ -78,13 +81,14 @@
               <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
           </svg>
         </div>
-        <input datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-[135px] h-[30px] left-[30px] top-[315px] rounded-bl-[15px] absolute" name="tanggal" id="tanggal" placeholder="Select date">
+        <input  type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-[135px] h-[30px] left-[30px] top-[315px] rounded-bl-[15px] absolute" name="tanggal" value="{{ $reservasi->tanggal }}" id="tanggal" placeholder="Select date">
       </div>
       </div>
 
     <!-- waktu mulai -->
     <div class="left-[188px] top-[295px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Waktu Mulai :</div>
     <select class="w-[85px] h-[30px] left-[188px] top-[315px] text-gray-100 px-2 p-1  rounded-bl-[15px] absolute bg-stone-500" name="waktu_mulai" id="waktu_mulai">
+      <option value="{{ $reservasi->waktu_mulai }}">{{ $reservasi->waktu_mulai }}</option>
       <option value="08:00">08:00</option>
       <option value="09:00">09:00</option>
       <option value="10:00">10:00</option>
@@ -100,6 +104,7 @@
     <!-- waktu selesai -->
     <div class="left-[293px] top-[295px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Waktu Selesai :</div>
     <select class="w-[85px] h-[30px] left-[293px] top-[315px] text-gray-100 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500" name="waktu_selesai" id="waktu_selesai">
+      <option value="{{ $reservasi->waktu_selesai }}">{{ $reservasi->waktu_selesai }}</option>
       <option value="08:00">08:00</option>
       <option value="09:00">09:00</option>
       <option value="10:00">10:00</option>
@@ -114,38 +119,37 @@
 
     <!-- kegiatan -->
     <div class="left-[30px] top-[350px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Kegiatan :</div>
-    <input class="w-[350px] h-[30px] left-[30px] top-[370px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="kegiatan" id="kegiatan" required>
+    <input class="w-[350px] h-[30px] left-[30px] top-[370px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="kegiatan" id="kegiatan" value="{{ $reservasi->kegiatan }}" required>
 
     <!-- Jumlah peserta -->
     <div class="left-[30px] top-[405px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Jumlah peserta :</div>
-    <input class="w-40 h-[30px] left-[30px] top-[425px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="jumlah_peserta" id="jumlah_peserta" type="number" required>
+    <input class="w-40 h-[30px] left-[30px] top-[425px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="jumlah_peserta" id="jumlah_peserta" value="{{ $reservasi->jumlah_peserta }}" type="number" required>
 
     <!-- Jumlah panitia -->
     <div class="left-[218px] top-[405px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Jumlah panitia :</div>
-    <input class="w-40 h-[30px] left-[218px] top-[425px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="jumlah_panitia" id="jumlah_panitia" type="number" required>
+    <input class="w-40 h-[30px] left-[218px] top-[425px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="jumlah_panitia" id="jumlah_panitia" value="{{ $reservasi->jumlah_panitia }}" type="number" required>
 
     <div class="w-[30px] h-[30px] left-[30px] top-[470px] text-white text-center absolute rounded-bl-[20px] absolute bg-orange-700">2</div>
     
     <!-- Nama penanggung jawab -->
     <div class="left-[30px] top-[505px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Nama penanggung jawab :</div>
-    <input class="w-[350px] h-[30px] left-[30px] top-[525px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="nama_penanggung_jawab" id="nama_penanggung_jawab" required>
+    <input class="w-[350px] h-[30px] left-[30px] top-[525px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="nama_penanggung_jawab" value="{{ $reservasi->nama_penanggung_jawab }}" id="nama_penanggung_jawab" required>
 
     <!-- Direktorat -->
     <div class="left-[30px] top-[560px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Direktorat :</div>
-    <select class="w-[350px] h-[30px] left-[30px] top-[580px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="direktorat" id="direktorat">
-      <option hidden>>>Pilih Direktorat<<</option>
-        @foreach ($data_direktorat as $item)
-      <option value="{{ $item->nama_direktorat }}">{{ $item->nama_direktorat }}</option>
-        @endforeach
+    <select class="w-[350px] h-[30px] left-[30px] top-[580px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="direktorat"  id="direktorat">
+        
+      <option value="{{ $reservasi->direktorat }}">{{ $reservasi->direktorat }}</option>
+        
     </select>
 
     <!-- Divisi -->
     <div class="left-[30px] top-[615px] absolute text-black text-[10px] text-black text-sm font-normal font-['Inter']">Divisi :</div>
-    <input class="w-[350px] h-[30px] left-[30px] top-[635px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="divisi" id="divisi">
+    <input class="w-[350px] h-[30px] left-[30px] top-[635px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="divisi" value="{{ $reservasi->divisi }}" id="divisi">
 
     <!-- Bagian -->
     <div class="left-[30px] top-[670px] absolute text-black text-[10px] text-black text-sm font-normal font-['Inter']">Bagian :</div>
-    <input class="w-[350px] h-[30px] left-[30px] top-[690px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="bagian" id="bagian">
+    <input class="w-[350px] h-[30px] left-[30px] top-[690px] text-gray-800 px-2 p-1 rounded-bl-[15px] absolute bg-stone-500 bg-opacity-30" name="bagian" value="{{ $reservasi->bagian }}" id="bagian">
 
     <!-- Kebutuhan/pendukung --> 
     <div class="left-[30px] top-[725px] absolute text-black text-sm text-[10px] font-normal font-['Inter']">Kebutuhan :</div>
@@ -175,13 +179,14 @@
     </div>
 
     <!-- Status --> 
-    <div id="status" name="status" value="tidak tersedia"></div>
+    <input id="status" name="status" value="{{ $reservasi->status }}">
 
     <!-- Button -->
-    <button type="submit" onclick="window.location='{{ url('home') }}'" class="w-20 h-10 left-[30px] top-[840px] text-white absolute rounded-bl-[30px] bg-blue-950">Back</button>
+    <a href="{{url('home')}}" class="w-20 h-10 left-[30px] top-[840px] text-white text-center absolute rounded-bl-[30px] bg-blue-950">Back</a>
     <button type="submit" name="submit" class="w-20 h-10 left-[298px] top-[840px] text-white absolute rounded-br-[30px] bg-blue-950">Kirim</button>
 </div>
 <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/datepicker.min.js"></script>
+  </form>
 </body>
 </html>
